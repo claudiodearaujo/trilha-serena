@@ -1,0 +1,12 @@
+<div class="bg-white shadow-brand rounded-brand-lg p-6">
+  <div class="flex mb-4">
+    @for (star of getStars(testimonial.rating); track $index) {
+      <lucide-icon [img]="Star" class="h-5 w-5 text-yellow-400 fill-current"></lucide-icon>
+    }
+  </div>
+  <p class="text-gray-600 mb-4">"{{testimonial.text}}"</p>
+  <div>
+    <p class="font-semibold text-brand-neutral-900">{{testimonial.name}}</p>
+    <p class="text-sm text-gray-500">{{testimonial.role}}</p>
+  </div>
+</div>

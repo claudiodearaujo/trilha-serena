@@ -1,0 +1,17 @@
+<section id="pacotes" class="py-16 bg-brand-neutral-100">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-brand-neutral-900 mb-4">
+        Nossos Pacotes
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Roteiros cuidadosamente planejados para diferentes momentos da sua vida
+      </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      @for (pkg of packages(); track pkg.id) {
+        <app-package-card [package]="pkg"></app-package-card>
+      }
+    </div>
+  </div>
+</section>

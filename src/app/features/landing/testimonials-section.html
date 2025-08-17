@@ -1,0 +1,17 @@
+<section class="py-16 bg-brand-neutral-100">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-brand-neutral-900 mb-4">
+        O que nossos clientes dizem
+      </h2>
+      <p class="text-lg text-gray-600">
+        Depoimentos de bancários que já viveram experiências incríveis conosco
+      </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      @for (testimonial of testimonials(); track testimonial.name) {
+        <app-testimonial-card [testimonial]="testimonial"></app-testimonial-card>
+      }
+    </div>
+  </div>
+</section>

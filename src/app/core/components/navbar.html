@@ -1,0 +1,19 @@
+<nav [class]="'navbar ' + (isScrolled ? 'scrolled' : '')">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-2">
+      <lucide-icon [img]="Compass" class="h-8 w-8 text-brand-primary"></lucide-icon>
+      <div>
+        <h1 class="text-xl font-bold text-brand-neutral-900">Trilha Serena</h1>
+        <p class="text-xs text-brand-primary">Viagens personalizadas</p>
+      </div>
+    </div>
+    <div class="hidden md:flex space-x-8">
+      <a href="#pacotes" class="text-brand-neutral-900 hover:text-brand-primary transition-colors">Pacotes</a>
+      <a href="#sobre" class="text-brand-neutral-900 hover:text-brand-primary transition-colors">Sobre</a>
+      <a href="#contato" class="text-brand-neutral-900 hover:text-brand-primary transition-colors">Contato</a>
+    </div>
+    <app-button variant="primary" (clicked)="onContactClick()">
+      Falar com consultora
+    </app-button>
+  </div>
+</nav>
