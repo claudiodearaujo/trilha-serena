@@ -1,8 +1,357 @@
-<h1 class="text-3xl font-bold underline caret-amber-600">
-  Hello world!
-</h1>
-<h1 class="text-3xl font-bold underline text-center mt-10">
-  Angular v19.1 + Tailwind CSS 4.0
-</h1>
-<p-button label="Check" />
-<router-outlet />
+<div class="min-h-screen">
+  <!-- Navbar -->
+  <nav [class]="'navbar ' + (isScrolled ? 'scrolled' : '')">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <lucide-icon [img]="Compass" class="h-8 w-8 text-brand-primary"></lucide-icon>
+        <div>
+          <h1 class="text-xl font-bold text-brand-neutral-900">Trilha Serena</h1>
+          <p class="text-xs text-brand-primary">Viagens personalizadas</p>
+        </div>
+      </div>
+      <div class="hidden md:flex space-x-8">
+        <a href="#pacotes" class="text-brand-neutral-900 hover:text-brand-primary transition-colors">Pacotes</a>
+        <a href="#sobre" class="text-brand-neutral-900 hover:text-brand-primary transition-colors">Sobre</a>
+        <a href="#contato" class="text-brand-neutral-900 hover:text-brand-primary transition-colors">Contato</a>
+      </div>
+      <button class="btn-primary">
+        Falar com consultora
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-2xl">
+        <h1 class="hero-title font-bold text-brand-neutral-900 mb-6 fade-in-up">
+          Viagens personalizadas para quem vive o mundo bancário
+        </h1>
+        <p class="hero-subtitle text-brand-neutral-900 mb-8 fade-in-up-delay-1">
+          A Trilha Serena é uma agência digital que cria roteiros sob medida para bancários e suas famílias, 
+          com suporte humano do planejamento ao retorno e processos pensados para sua rotina.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 fade-in-up-delay-2">
+          <button class="btn-primary text-lg px-8 py-4">
+            Solicitar roteiro
+          </button>
+          <button class="btn-secondary text-lg px-8 py-4">
+            Ver pacotes
+          </button>
+        </div>
+        <p class="text-sm text-brand-neutral-900 mt-4 fade-in-up-delay-2">
+          Leva 2 minutos. Sem compromisso.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-brand-neutral-900 mb-4">
+          Por que escolher a Trilha Serena?
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Entendemos as necessidades específicas de quem trabalha no setor bancário
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-4">
+            <lucide-icon [img]="Shield" class="h-8 w-8 text-white"></lucide-icon>
+          </div>
+          <h3 class="text-xl font-semibold text-brand-neutral-900 mb-2">Segurança Total</h3>
+          <p class="text-gray-600">Pagamentos com proteção 3-D Secure e cancelamento grátis</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-brand-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+            <lucide-icon [img]="Heart" class="h-8 w-8 text-white"></lucide-icon>
+          </div>
+          <h3 class="text-xl font-semibold text-brand-neutral-900 mb-2">Suporte Humano</h3>
+          <p class="text-gray-600">Atendimento personalizado do planejamento ao retorno</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
+            <lucide-icon [img]="CheckCircle" class="h-8 w-8 text-white"></lucide-icon>
+          </div>
+          <h3 class="text-xl font-semibold text-brand-neutral-900 mb-2">Processos Inteligentes</h3>
+          <p class="text-gray-600">Planejamento pensado para sua rotina bancária</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages Section -->
+  <section id="pacotes" class="py-16 bg-brand-neutral-100">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-brand-neutral-900 mb-4">
+          Nossos Pacotes
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Roteiros cuidadosamente planejados para diferentes momentos da sua vida
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        @for (pkg of packages; track pkg.id) {
+          <div class="card-package">
+            <div class="relative">
+              <img [src]="pkg.image" [alt]="pkg.title" class="w-full h-48 object-cover" />
+              <div class="absolute top-4 left-4 flex gap-2">
+                <span class="bg-brand-primary text-white px-2 py-1 rounded text-sm">{{pkg.days}}</span>
+                <span class="bg-brand-secondary text-white px-2 py-1 rounded text-sm">{{pkg.regime}}</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-brand-neutral-900 mb-2">{{pkg.title}}</h3>
+              <p class="text-gray-600 mb-4">{{pkg.description}}</p>
+              <div class="space-y-2 mb-4">
+                @for (feature of pkg.features; track feature) {
+                  <div class="flex items-center gap-2">
+                    <lucide-icon [img]="CheckCircle" class="h-4 w-4 text-brand-primary"></lucide-icon>
+                    <span class="text-sm text-gray-600">{{feature}}</span>
+                  </div>
+                }
+              </div>
+              <div class="mb-4">
+                <p class="text-2xl font-bold text-brand-accent">{{pkg.price}}</p>
+              </div>
+              <button class="btn-secondary w-full">
+                Quero meu planejamento
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="sobre" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-brand-neutral-900 mb-6">
+            Sobre a Trilha Serena
+          </h2>
+          <p class="text-lg text-gray-600 mb-6">
+            Somos uma agência digital especializada em criar experiências de viagem únicas para profissionais 
+            do setor bancário e suas famílias. Entendemos que sua rotina é intensa e seu tempo é precioso.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <lucide-icon [img]="Compass" class="h-6 w-6 text-brand-primary mt-1"></lucide-icon>
+              <div>
+                <h3 class="font-semibold text-brand-neutral-900">Explorador + Cuidador</h3>
+                <p class="text-gray-600">Combinamos a descoberta de novos destinos com o cuidado em cada detalhe</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <lucide-icon [img]="Heart" class="h-6 w-6 text-brand-primary mt-1"></lucide-icon>
+              <div>
+                <h3 class="font-semibold text-brand-neutral-900">Serenidade Garantida</h3>
+                <p class="text-gray-600">Nossa promessa é proporcionar serenidade antes, durante e depois da viagem</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <lucide-icon [img]="Shield" class="h-6 w-6 text-brand-primary mt-1"></lucide-icon>
+              <div>
+                <h3 class="font-semibold text-brand-neutral-900">Clareza e Acessibilidade</h3>
+                <p class="text-gray-600">Priorizamos a clareza na comunicação e acessibilidade para todos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <img src="assets/images/trilha_serena_paisagem_1.png" alt="Paisagem serena" class="rounded-brand-lg shadow-brand" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-16 bg-brand-neutral-100">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-brand-neutral-900 mb-4">
+          O que nossos clientes dizem
+        </h2>
+        <p class="text-lg text-gray-600">
+          Depoimentos de bancários que já viveram experiências incríveis conosco
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        @for (testimonial of testimonials; track testimonial.name) {
+          <div class="bg-white shadow-brand rounded-brand-lg p-6">
+            <div class="flex mb-4">
+              @for (star of getStars(testimonial.rating); track $index) {
+                <lucide-icon [img]="Star" class="h-5 w-5 text-yellow-400 fill-current"></lucide-icon>
+              }
+            </div>
+            <p class="text-gray-600 mb-4">"{{testimonial.text}}"</p>
+            <div>
+              <p class="font-semibold text-brand-neutral-900">{{testimonial.name}}</p>
+              <p class="text-sm text-gray-500">{{testimonial.role}}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contato" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-brand-neutral-900 mb-4">
+            Entre em Contato
+          </h2>
+          <p class="text-lg text-gray-600">
+            Pronto para sua próxima aventura? Vamos planejar juntos!
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12">
+          <div>
+            <h3 class="text-xl font-semibold text-brand-neutral-900 mb-6">
+              Fale Conosco
+            </h3>
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <lucide-icon [img]="Phone" class="h-5 w-5 text-brand-primary"></lucide-icon>
+                <div>
+                  <p class="font-medium">WhatsApp</p>
+                  <p class="text-gray-600">Respondemos em até 2 min (horário comercial)</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <lucide-icon [img]="Mail" class="h-5 w-5 text-brand-primary"></lucide-icon>
+                <div>
+                  <p class="font-medium">E-mail</p>
+                  <p class="text-gray-600">contato@trilhaserena.com.br</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <lucide-icon [img]="MapPin" class="h-5 w-5 text-brand-primary"></lucide-icon>
+                <div>
+                  <p class="font-medium">Atendimento</p>
+                  <p class="text-gray-600">100% digital, em todo o Brasil</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <form (ngSubmit)="handleSubmit()" class="space-y-4">
+              <div class="form-field">
+                <label for="name" class="form-label">Nome completo</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  [(ngModel)]="formData.name"
+                  class="form-input"
+                  required
+                />
+              </div>
+              <div class="form-field">
+                <label for="email" class="form-label">E-mail</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  [(ngModel)]="formData.email"
+                  class="form-input"
+                  required
+                />
+              </div>
+              <div class="form-field">
+                <label for="phone" class="form-label">Telefone/WhatsApp</label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  [(ngModel)]="formData.phone"
+                  class="form-input"
+                  required
+                />
+              </div>
+              <div class="form-field">
+                <label for="message" class="form-label">Mensagem</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  [(ngModel)]="formData.message"
+                  class="form-input"
+                  rows="4"
+                  placeholder="Conte-nos sobre sua viagem dos sonhos..."
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn-primary w-full">
+                Enviar mensagem
+              </button>
+              <p class="text-sm text-gray-500 text-center">
+                Leva 2 minutos. Sem compromisso.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-brand-neutral-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <lucide-icon [img]="Compass" class="h-8 w-8 text-brand-primary"></lucide-icon>
+            <div>
+              <h3 class="text-xl font-bold">Trilha Serena</h3>
+              <p class="text-sm text-brand-primary">Viagens personalizadas</p>
+            </div>
+          </div>
+          <p class="text-gray-300 text-sm">
+            Viagens personalizadas para quem vive o mundo bancário.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Serviços</h4>
+          <ul class="space-y-2 text-sm text-gray-300">
+            <li><a href="#" class="hover:text-brand-primary transition-colors">Roteiros Personalizados</a></li>
+            <li><a href="#" class="hover:text-brand-primary transition-colors">Pacotes Familiares</a></li>
+            <li><a href="#" class="hover:text-brand-primary transition-colors">Viagens Corporativas</a></li>
+            <li><a href="#" class="hover:text-brand-primary transition-colors">Seguro Viagem</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Suporte</h4>
+          <ul class="space-y-2 text-sm text-gray-300">
+            <li><a href="#" class="hover:text-brand-primary transition-colors">Central de Ajuda</a></li>
+            <li><a href="#" class="hover:text-brand-primary transition-colors">Política de Cancelamento</a></li>
+            <li><a href="#" class="hover:text-brand-primary transition-colors">Termos de Uso</a></li>
+            <li><a href="#" class="hover:text-brand-primary transition-colors">Privacidade</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Contato</h4>
+          <ul class="space-y-2 text-sm text-gray-300">
+            <li>WhatsApp: (11) 99999-9999</li>
+            <li>E-mail: contato@trilhaserena.com.br</li>
+            <li>Atendimento: Seg-Sex, 9h-18h</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-sm text-gray-300">
+          © 2024 Trilha Serena. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <router-outlet />
+</div>
