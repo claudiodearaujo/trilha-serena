@@ -1,17 +1,41 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
-import { PrimeNG } from 'primeng/config';
+import { CommonModule } from '@angular/common';
+
+// Core Components
+import { Navbar } from './core/components/navbar';
+import { Footer } from './core/components/footer';
+
+// Landing Page Sections
+import { HeroSection } from './features/landing/hero-section';
+import { FeaturesSection } from './features/landing/features-section';
+import { PackagesSection } from './features/landing/packages-section';
+import { AboutSection } from './features/landing/about-section';
+import { TestimonialsSection } from './features/landing/testimonials-section';
+import { ContactSection } from './features/landing/contact-section';
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ButtonModule],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    Navbar,
+    Footer,
+    HeroSection,
+    FeaturesSection,
+    PackagesSection,
+    AboutSection,
+    TestimonialsSection,
+    ContactSection
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App implements OnInit  {
-  constructor(private primeng: PrimeNG) {}
-  protected readonly title = signal('trilha-serena');
-  ngOnInit() {
-    this.primeng.ripple.set(true);
-}
+export class App {
+  isScrolled = false;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isScrolled = window.scrollY > 50;
+  }
 }

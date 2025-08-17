@@ -1,0 +1,30 @@
+<section class="hero-section">
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-2xl">
+      <h1 class="hero-title font-bold text-brand-neutral-900 mb-6 fade-in-up">
+        Viagens personalizadas para quem vive o mundo bancário
+      </h1>
+      <p class="hero-subtitle text-brand-neutral-900 mb-8 fade-in-up-delay-1">
+        A Trilha Serena é uma agência digital que cria roteiros sob medida para bancários e suas famílias, 
+        com suporte humano do planejamento ao retorno e processos pensados para sua rotina.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 fade-in-up-delay-2">
+        <app-button 
+          variant="primary" 
+          size="lg" 
+          (clicked)="onRequestItinerary()">
+          Solicitar roteiro
+        </app-button>
+        <app-button 
+          variant="secondary" 
+          size="lg" 
+          (clicked)="onViewPackages()">
+          Ver pacotes
+        </app-button>
+      </div>
+      <p class="text-sm text-brand-neutral-900 mt-4 fade-in-up-delay-2">
+        Leva 2 minutos. Sem compromisso.
+      </p>
+    </div>
+  </div>
+</section>
