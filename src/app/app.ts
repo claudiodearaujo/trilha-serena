@@ -1,0 +1,17 @@
+import { Component, OnInit, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { PrimeNG } from 'primeng/config';
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet, ButtonModule],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App implements OnInit  {
+  constructor(private primeng: PrimeNG) {}
+  protected readonly title = signal('trilha-serena');
+  ngOnInit() {
+    this.primeng.ripple.set(true);
+}
+}
