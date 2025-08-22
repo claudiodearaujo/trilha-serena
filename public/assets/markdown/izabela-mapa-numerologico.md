@@ -1,4 +1,4 @@
-# 🎴 MAPA NUMEROLÓGICO — JORNADA DO HERÓI
+# 🎴 MAPA NUMEROLÓGICO
 
 ## Visão Geral
 
@@ -32,7 +32,7 @@ O ponto de atenção emerge dos **múltiplos números cármicos** presentes em s
 
 ---
 
-## 2) A Jornada do Herói (Narrativa)
+## 2) A Jornada
 
 ### 2.1 Chamado à Aventura — Caminho da Vida 7
 
