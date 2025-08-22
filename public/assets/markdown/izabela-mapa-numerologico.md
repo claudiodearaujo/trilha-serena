@@ -1,6 +1,6 @@
 # 🎴 MAPA NUMEROLÓGICO — JORNADA DO HERÓI
 
-## Capa — Visão Geral
+## Visão Geral
 
 **Cliente**: Izabela Ferreira dos Santos  
 **Nascimento**: 22/10/1991
@@ -477,3 +477,6 @@ Confie na profundidade de sua natureza investigativa, Izabela. Confie na origina
 O mundo precisa urgentemente do que você veio trazer: uma demonstração viva de que é possível investigar a verdade sem perder a compaixão, manifestar poder sem perder a humildade, e liderar transformações sem perder a conexão amorosa com aqueles que você serve. Sua vida será, em si mesma, um experimento sagrado, um modelo para outros que buscam integrar sabedoria espiritual com aplicação prática efetiva.
 
 Siga a luz de sua investigação interior, e ela te levará não apenas à realização de seu potencial extraordinário, mas à criação de legados duradouros que continuarão inspirando e beneficiando outras almas muito além de sua presença física neste mundo.
+
+
+> *Por: Terapeuta Claudio de Araújo, mapa gerado dia 22-08-2025*
