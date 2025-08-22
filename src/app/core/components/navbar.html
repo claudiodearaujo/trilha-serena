@@ -1,20 +1,51 @@
 <nav [class]="'navbar ' + (isScrolled ? 'scrolled' : '')">
-  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-    <div class="flex items-center space-x-2">
-
-      <img src="images/logo.png" alt="Trilha Serena" class="h-8 w-8">
-      <div>
-        <h1 class="text-xl font-bold text-brand-neutral-900">Trilha Serena</h1>
-        <p class="text-xs text-brand-primary">Viagens personalizadas</p>
+  <div class="container mx-auto px-4 py-4">
+    <div class="flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <img src="images/logo.png" alt="Trilha Serena" class="h-8 w-8">
+        <div>
+          <h1 class="text-xl font-bold text-brand-neutral-900">Trilha Serena</h1>
+          <p class="text-xs text-brand-primary">Viagens personalizadas</p>
+        </div>
+      </div>
+      
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-8">
+        <a href="#pacotes" class="text-brand-neutral-900 hover:text-brand-primary transition-colors">Pacotes</a>
+        <a href="#sobre" class="text-brand-neutral-900 hover:text-brand-primary transition-colors">Sobre</a>
+        <a routerLink="/numerologia/mapa/izabela/8/22/2025" class="text-brand-neutral-900 hover:text-brand-primary transition-colors">Numerologia</a>
+        <a href="#contato" class="text-brand-neutral-900 hover:text-brand-primary transition-colors">Contato</a>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <app-button variant="primary" (clicked)="onContactClick()" class="hidden sm:block">
+          Falar com consultora
+        </app-button>
+        
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden p-2" (click)="toggleMobileMenu()">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  [attr.d]="mobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'">
+            </path>
+          </svg>
+        </button>
       </div>
     </div>
-    <div class="hidden md:flex space-x-8">
-      <a href="#pacotes" class="text-brand-neutral-900 hover:text-brand-primary transition-colors">Pacotes</a>
-      <a href="#sobre" class="text-brand-neutral-900 hover:text-brand-primary transition-colors">Sobre</a>
-      <a href="#contato" class="text-brand-neutral-900 hover:text-brand-primary transition-colors">Contato</a>
+    
+    <!-- Mobile Menu -->
+    <div class="md:hidden" [class.hidden]="!mobileMenuOpen">
+      <div class="pt-4 pb-2 space-y-2 border-t border-gray-200 mt-4">
+        <a href="#pacotes" class="block px-3 py-2 text-brand-neutral-900 hover:text-brand-primary transition-colors" (click)="closeMobileMenu()">Pacotes</a>
+        <a href="#sobre" class="block px-3 py-2 text-brand-neutral-900 hover:text-brand-primary transition-colors" (click)="closeMobileMenu()">Sobre</a>
+        <a routerLink="/numerologia/mapa/izabela/8/22/2025" class="block px-3 py-2 text-brand-neutral-900 hover:text-brand-primary transition-colors" (click)="closeMobileMenu()">Numerologia</a>
+        <a href="#contato" class="block px-3 py-2 text-brand-neutral-900 hover:text-brand-primary transition-colors" (click)="closeMobileMenu()">Contato</a>
+        <div class="pt-2">
+          <app-button variant="primary" (clicked)="onContactClick()" class="w-full">
+            Falar com consultora
+          </app-button>
+        </div>
+      </div>
     </div>
-    <app-button variant="primary" (clicked)="onContactClick()">
-      Falar com consultora
-    </app-button>
   </div>
 </nav>
