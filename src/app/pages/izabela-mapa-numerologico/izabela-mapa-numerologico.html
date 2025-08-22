@@ -1,0 +1,16 @@
+<div style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
+  <div style="background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 2rem;">
+    <div style="margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #e5e7eb;">
+      <h1 style="font-size: 1.875rem; font-weight: bold; color: #1f2937; margin-bottom: 0.5rem;">
+        Mapa Numerológico
+      </h1>
+      <p style="color: #6b7280; font-size: 0.875rem;">
+        Parâmetros: {{ nome }} - {{ dia }}/{{ mes }}/{{ ano }}
+      </p>
+    </div>
+    
+    <div class="markdown-content">
+      <markdown [data]="markdownContent"></markdown>
+    </div>
+  </div>
+</div>
